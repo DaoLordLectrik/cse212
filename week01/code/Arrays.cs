@@ -13,7 +13,20 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+
+        //Create an array that will hold the multiples. Data type double and size set as lenght to match the length of the multiples
+        double[] multiples=new double[length];
+
+        // Use a loop to fill data in each element of the array.
+
+        for (int i = 0; i < length; i++)
+        {
+            // Calculate the multiple of the data number and assign it to the current position in the array
+            multiples[i] = (i + 1) * number;
+        }
+
+        // Return the entered list of multiples
+        return multiples;
     }
 
     /// <summary>
@@ -29,5 +42,21 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+
+        //If the amount is 0 or equal to data Count, no rotation is to be done
+        if (amount == 0 || amount == data.Count) return;
+
+        //Calculate the rotation amount by using modulo.
+        amount = amount % data.Count;
+
+        //Seperate the list to two parts and rotate the.
+        List<int> lastSplit = data.GetRange(data.Count - amount, amount);
+        List<int> firstSplit = data.GetRange(0, data.Count - amount);
+
+        //Clear the original list, add lastPart to the front and firstPart will follow
+        data.Clear();
+        data.AddRange(lastSplit);
+        data.AddRange(firstSplit);
     }
 }
