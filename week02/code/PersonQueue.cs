@@ -13,7 +13,14 @@ public class PersonQueue
     /// <param name="person">The person to add</param>
     public void Enqueue(Person person)
     {
-        _queue.Insert(0, person);
+        if (Length == 0)
+        {
+            _queue.Insert(0, person);
+        }
+        else
+        {
+            _queue.Insert(Length, person);
+        }
     }
 
     public Person Dequeue()
