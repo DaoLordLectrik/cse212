@@ -64,7 +64,7 @@
     /// <returns>First integer in the queue</returns>
     private int Dequeue() {
         if (_queue.Count <= 0)
-            throw new IndexOutOfRangeException();
+            throw new InvalidOperationException("Queue is empty.");
 
         var value = _queue[0]; // Defect 1 - lists start at index 0
         _queue.RemoveAt(0);
