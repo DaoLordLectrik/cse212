@@ -32,7 +32,18 @@ public class Maze
     /// </summary>
     public void MoveLeft()
     {
-        // FILL IN CODE
+        // Check if the current location exists in the maze map
+        if (_mazeMap.TryGetValue((_currX, _currY), out bool[] directions))
+        {
+            if (directions[0]) // 'Left' is the first index in the directions array
+            {
+                _currX--; // Move one step left by decreasing X-coordinate
+            }
+            else
+            {
+                throw new InvalidOperationException("Can't go that way!");
+            }
+        }
     }
 
     /// <summary>
@@ -41,7 +52,18 @@ public class Maze
     /// </summary>
     public void MoveRight()
     {
-        // FILL IN CODE
+         // Check if the current location exists in the maze map
+        if (_mazeMap.TryGetValue((_currX, _currY), out bool[] directions))
+        {
+            if (directions[1]) // 'Right' is the second index in the directions array
+            {
+                _currX++; // Move one step right by increasing X-coordinate
+            }
+            else
+            {
+                throw new InvalidOperationException("Can't go that way!");
+            }
+        }
     }
 
     /// <summary>
@@ -50,7 +72,18 @@ public class Maze
     /// </summary>
     public void MoveUp()
     {
-        // FILL IN CODE
+        // Check if the current location exists in the maze map
+        if (_mazeMap.TryGetValue((_currX, _currY), out bool[] directions))
+        {
+            if (directions[2]) // 'Up' is the third index in the directions array
+            {
+                _currY--; // Move one step up by decreasing Y-coordinate
+            }
+            else
+            {
+                throw new InvalidOperationException("Can't go that way!");
+            }
+        }
     }
 
     /// <summary>
@@ -59,7 +92,18 @@ public class Maze
     /// </summary>
     public void MoveDown()
     {
-        // FILL IN CODE
+        // Check if the current location exists in the maze map
+        if (_mazeMap.TryGetValue((_currX, _currY), out bool[] directions))
+        {
+            if (directions[3]) // 'Down' is the fourth index in the directions array
+            {
+                _currY++; // Move one step down by increasing Y-coordinate
+            }
+            else
+            {
+                throw new InvalidOperationException("Can't go that way!");
+            }
+        }
     }
 
     public string GetStatus()
