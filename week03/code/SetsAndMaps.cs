@@ -21,8 +21,28 @@ public static class SetsAndMaps
     /// <param name="words">An array of 2-character words (lowercase, no duplicates)</param>
     public static string[] FindPairs(string[] words)
     {
-        // TODO Problem 1 - ADD YOUR CODE HERE
-        return [];
+        // New set to copy the words being passed in
+        var wordList = new HashSet<string>(words);
+        // New set for all pairs
+        var pairs = new HashSet<string>();
+        // New set of all of words used so far
+        var usedWords = new HashSet<string>();
+        // Loops through words in array of words being passed
+        foreach (string word in words)
+        {
+            // Defines variable "reverseWord" equal to reverse of word being focused on
+            string reverseWord = string.Concat(word.Reverse());
+            // If reverse word is in list and "usedWords" set doesn't already contain the pair, checks if the words and reverse word aren't the same
+            if (wordList.Contains(reverseWord) && !usedWords.Contains(word) && word != reverseWord)
+            {
+                // If passed, added to the set
+                pairs.Add($"{word} & {reverseWord}");
+                // Add "reverseWord" to list of "usedWords"
+                usedWords.Add(reverseWord);
+            }
+        }
+        // Returns set at end
+        return pairs.ToArray();
     }
 
     /// <summary>
@@ -38,11 +58,30 @@ public static class SetsAndMaps
     /// <returns>fixed array of divisors</returns>
     public static Dictionary<string, int> SummarizeDegrees(string filename)
     {
+        // New dictionary called "degrees" to contain data
         var degrees = new Dictionary<string, int>();
+        // Loop through each line of code
         foreach (var line in File.ReadLines(filename))
         {
+            // Separate each line by a comma
             var fields = line.Split(",");
-            // TODO Problem 2 - ADD YOUR CODE HERE
+            // Set degree value to 1
+            var degree = 1;
+            // State degree from the data at index 3 or column #4
+            var degreeType = fields[3];
+            // If the degrees dictionary doesn't already contain degree type
+            if (!degrees.ContainsKey(degreeType))
+            {
+                // Add degree type to dicationary, add number 1 for first entry
+                degrees.Add(degreeType, degree);
+            }
+            
+            else
+            {
+                // Else increase count of the degree by 1
+                degrees[degreeType] += 1;
+            }
+
         }
 
         return degrees;
@@ -66,8 +105,43 @@ public static class SetsAndMaps
     /// </summary>
     public static bool IsAnagram(string word1, string word2)
     {
-        // TODO Problem 3 - ADD YOUR CODE HERE
+        var anagrams1 = new Dictionary<char, int>();
+        var anagrams2 = new Dictionary<char, int>();
+        foreach (char letter in word1)
+        {
+            char newChar1 = char.ToUpper(letter);
+            if (char.IsWhiteSpace(newChar1))
+            {
+                continue;
+            }
+            if (!anagrams1.ContainsKey(newChar1))
+            {
+                anagrams1.Add(newChar1, 1);
+            }
+            else
+            {
+                anagrams1[newChar1] += 1;
+            }
+        }
+        foreach (char letter in word2)
+        {
+            char newChar2 = char.ToUpper(letter);
+            if (char.IsWhiteSpace(newChar2))
+            {
+                continue;
+            }
+            if (!anagrams2.ContainsKey(newChar2))
+            {
+                anagrams2.Add(newChar2, 1);
+            }
+            else
+            {
+                anagrams2[newChar2] += 1;
+            }
+        }
         return false;
+
+        // TODO Problem 3 - ADD YOUR CODE HERE
     }
 
     /// <summary>
