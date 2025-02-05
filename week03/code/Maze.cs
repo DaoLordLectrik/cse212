@@ -34,10 +34,11 @@ public class Maze
     {
         // Check if the current location exists in the maze map
         if (_mazeMap.TryGetValue((_currX, _currY), out bool[] directions))
-        {
-            if (directions[0]) // 'Left' is the first index in the directions array
+        {   // 'Left' is the first index in the directions array
+            if (directions[0]) 
             {
-                _currX--; // Move one step left by decreasing X-coordinate
+                // Move one step left by decreasing X-coordinate
+                _currX--; 
             }
             else
             {
@@ -54,10 +55,12 @@ public class Maze
     {
          // Check if the current location exists in the maze map
         if (_mazeMap.TryGetValue((_currX, _currY), out bool[] directions))
-        {
-            if (directions[1]) // 'Right' is the second index in the directions array
+        {   
+            // 'Right' is the second index in the directions array
+            if (directions[1]) 
             {
-                _currX++; // Move one step right by increasing X-coordinate
+                // Move one step right by increasing X-coordinate
+                _currX++; 
             }
             else
             {
@@ -75,9 +78,11 @@ public class Maze
         // Check if the current location exists in the maze map
         if (_mazeMap.TryGetValue((_currX, _currY), out bool[] directions))
         {
-            if (directions[2]) // 'Up' is the third index in the directions array
+            // 'Up' is the third index in the directions array
+            if (directions[2]) 
             {
-                _currY--; // Move one step up by decreasing Y-coordinate
+                // Move one step up by decreasing Y-coordinate
+                _currY--; 
             }
             else
             {
@@ -95,9 +100,11 @@ public class Maze
         // Check if the current location exists in the maze map
         if (_mazeMap.TryGetValue((_currX, _currY), out bool[] directions))
         {
-            if (directions[3]) // 'Down' is the fourth index in the directions array
+            // 'Down' is the fourth index in the directions array
+            if (directions[3]) 
             {
-                _currY++; // Move one step down by increasing Y-coordinate
+                // Move one step down by increasing Y-coordinate
+                _currY++; 
             }
             else
             {
